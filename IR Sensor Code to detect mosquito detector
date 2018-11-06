@@ -5,7 +5,7 @@ int analogInPin3 = A2;
 int analogInPin4 = A3;
 int analogInPin5 = A4;
 int analogInPin6 = A5;
-int out =13;
+int count=0;
 int s1,s2,s3,s4,s5,s6;
 int sensorValue1 = 0;        // value read from the pot
 int sensorValue2 = 0;        // value read from the pot
@@ -49,12 +49,15 @@ void loop() {
   if(sensorValue1>s1+2||sensorValue2>s2+2||sensorValue3>s3+2||sensorValue4>s4+2||sensorValue5>s5+2||sensorValue6>s6+2)
   {
     digitalWrite(LED_BUILTIN,1);
+    count++;
     s1=sensorValue1;
     s2=sensorValue2;
     s3=sensorValue3;
     s4=sensorValue4;
     s5=sensorValue5;
     s6=sensorValue6;
+    Serial.print("Mosquito Counted : ");
+    Serial.println(count);
   }
   else
   {
