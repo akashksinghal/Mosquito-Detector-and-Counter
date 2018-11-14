@@ -22,17 +22,17 @@ void setup() {
 
 void loop() { 
   // read the analog in value:
-  analogReadResolution(12);
+  //analogReadResolution(12);
   sensorValue1 = analogRead(analogInPin1);
-  analogReadResolution(12);
+ // analogReadResolution(12);
   sensorValue2 = analogRead(analogInPin2);
-  analogReadResolution(12);
+  //analogReadResolution(12);
   sensorValue3 = analogRead(analogInPin3);
-  analogReadResolution(12);
+  //analogReadResolution(12);
   sensorValue4 = analogRead(analogInPin4);
-  analogReadResolution(12);
+  //analogReadResolution(12);
   sensorValue5 = analogRead(analogInPin5);
-  analogReadResolution(12);
+  //analogReadResolution(12);
   sensorValue6 = analogRead(analogInPin6);
   Serial.print("S1 = " );
   Serial.print(sensorValue1);
