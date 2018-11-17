@@ -1,0 +1,72 @@
+//Arduino Code
+int analogInPin1 = A0;
+int analogInPin2 = A1;// Analog input pin that the potentiometer is attached to
+int analogInPin3 = A2;
+int analogInPin4 = A3;
+int analogInPin5 = A4;
+int analogInPin6 = A5;
+int count=0;
+int s1,s2,s3,s4,s5,s6;
+int sensorValue1 = 0;        // value read from the pot
+int sensorValue2 = 0;        // value read from the pot
+int sensorValue3 = 0;        // value read from the pot
+int sensorValue4 = 0;        // value read from the pot
+int sensorValue5 = 0;        // value read from the pot
+int sensorValue6 = 0;        // value read from the pot
+
+void setup() {
+  // initialize serial communications at 9600 bps:
+  Serial.begin(9600);
+  pinMode(LED_BUILTIN, OUTPUT);
+}
+
+void loop() { 
+  // read the analog in value:
+  analogReadResolution(12);
+  sensorValue1 = analogRead(analogInPin1);
+  analogReadResolution(12);
+  sensorValue2 = analogRead(analogInPin2);
+  analogReadResolution(12);
+  sensorValue3 = analogRead(analogInPin3);
+  analogReadResolution(12);
+  sensorValue4 = analogRead(analogInPin4);
+  analogReadResolution(12);
+  sensorValue5 = analogRead(analogInPin5);
+  analogReadResolution(12);
+  sensorValue6 = analogRead(analogInPin6);
+  Serial.print("S1 = " );
+  Serial.print(sensorValue1);
+  Serial.print(" S2 = " );
+  Serial.print(sensorValue2);
+  Serial.print(" S3 = " );
+  Serial.print(sensorValue3);
+  Serial.print(" S4 = " );
+  Serial.println(sensorValue4);
+  Serial.print(" S5 = " );
+  Serial.print(sensorValue5);
+  Serial.print(" S6 = " );
+  Serial.println(sensorValue6);
+  if(sensorValue1>s1+2||sensorValue2>s2+2||sensorValue3>s3+2||sensorValue4>s4+2||sensorValue5>s5+2||sensorValue6>s6+2)
+  {
+    digitalWrite(LED_BUILTIN,1);
+    count++;
+    s1=sensorValue1;
+    s2=sensorValue2;
+    s3=sensorValue3;
+    s4=sensorValue4;
+    s5=sensorValue5;
+    s6=sensorValue6;
+    Serial.print("Mosquito Counted : ");
+    Serial.println(count);
+  }
+  else
+  {
+    digitalWrite(LED_BUILTIN,0);
+    s1=sensorValue1;
+    s2=sensorValue2;
+    s3=sensorValue3;
+    s4=sensorValue4;    
+    s5=sensorValue5;
+    s6=sensorValue6;
+  }
+}
